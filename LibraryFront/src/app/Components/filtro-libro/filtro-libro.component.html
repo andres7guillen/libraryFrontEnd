@@ -1,0 +1,73 @@
+<h1>Libros</h1>
+<hr>
+
+<div class="container">
+    <form (ngSubmit)="filtrar(f)" #f="ngForm">
+        <div class="form-group">
+            <label>Nombre:</label>
+            <input type="text" [(ngModel)]="filtro.nombreLibro" name="nombre" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label>Categoria:</label><hr>
+              <select [(ngModel)]="filtro.categoriaId" name="categoria">
+                <option *ngFor="let categoria of listadoCategoria" [value]="categoria.id">{{categoria.nombre}}</option>
+              </select>
+          </div>
+
+          <div class="form-group">
+            <label>Autor:</label><hr>
+              <select [(ngModel)]="filtro.autorId" name="autor">
+                <option *ngFor="let autor of listadoAutores" [value]="autor.id">{{autor.nombre}}</option>
+              </select>
+          </div>
+
+          <hr>
+      <div class="form-group text-center">
+        <button [disabled]="f.invalid" type="submit" class="btn btn-primary w-25">
+          <i class="fa fa-save"></i>
+          Buscar
+        </button>        
+      </div>
+    </form>
+    <button style="margin: 2px;" (click)="borrarFiltro()" class="btn btn-primary w-10">
+        <i class="fa fa-minus"></i>
+        Borrar filtro
+      </button>
+</div>
+
+<table class="table mt-3 animated fadeIn faster">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Autor</th>
+      <th scope="col">Categoria</th>
+      <th scope="col">ISBN</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let libro of listado; let i = index">   
+    <td>{{i + 1}}</td>   
+    <td>{{libro.nombre}}</td>
+    <td>{{libro.autor.nombre }}  {{ libro.autor.apellidos }} </td>
+    <td>{{libro.categoria.nombre}}</td>
+    <td>{{libro.isbn}}</td>
+      <td>
+        <button class="btn btn-info mr-1"
+        [routerLink]="['/editarLibro', libro.id]">
+          <i class="fa fa-pencil"></i>  
+        </button>
+        <button (click)="borrarLibro(libro,i)" class="btn btn-danger mr-1">
+            <i class="fa fa-trash"></i>  
+          </button>
+        <button [routerLink]="['/detalleLibro',libro.id]" class="btn btn-info">
+          <i class="fa fa-eye"></i>  
+        </button>
+      </td>
+      
+    </tr>
+  </tbody>
+</table>
+

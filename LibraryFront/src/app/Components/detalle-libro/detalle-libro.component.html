@@ -1,0 +1,44 @@
+<h4>Detalle Libro</h4>
+<hr>
+<div class="row text-right">
+  <div class="col">
+    <button 
+  routerLink="/listarLibro"
+  class="btn btn-danger">
+    <i class="fa fa-arrow-left"> Regresar</i>
+  </button>
+  </div>  
+</div>
+
+<div class="row animated fadeIn faster">
+  <div class="col">
+    <form #f="ngForm">
+      <div class="form-group">
+        <label>Nombre:</label>
+        <input disabled type="text" [(ngModel)]="libro.nombre" name="nombre" required class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label>Autor:</label><hr>
+        <p>{{libro.autor.nombre}}  {{ libro.autor.apellidos}}</p>
+            
+          
+      </div>      
+
+      <div class="form-group">
+        <label>Categoria:</label><hr>
+        <p>{{libro.categoria.nombre}}</p>
+            
+  
+      </div>
+
+      <div class="form-group">
+        <label>ISBN:</label>
+        <input disabled type="text" [(ngModel)]="libro.isbn" name="isbn" required class="form-control">
+      </div>      
+
+      <hr>
+    </form>
+
+  </div>
+</div>

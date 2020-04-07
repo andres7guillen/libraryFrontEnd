@@ -1,0 +1,30 @@
+<h4>Detalle Categoria</h4>
+<hr>
+<div class="row text-right">
+  <div class="col">
+    <button 
+  routerLink="/listarCategoria"
+  class="btn btn-danger">
+    <i class="fa fa-arrow-left"> Regresar</i>
+  </button>
+  </div>  
+</div>
+
+<div class="row animated fadeIn faster">
+  <div class="col">
+    <form #f="ngForm">
+      <div class="form-group">
+        <label>Nombre:</label>
+        <input disabled type="text" [(ngModel)]="categoria.nombre" name="nombres" required class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label>Descripción:</label>
+        <input disabled type="text" [(ngModel)]="categoria.descripcion" name="descripcion" required class="form-control">
+      </div>
+
+      <hr>
+    </form>
+
+  </div>
+</div>

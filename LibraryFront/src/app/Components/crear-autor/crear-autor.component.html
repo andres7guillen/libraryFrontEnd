@@ -1,0 +1,42 @@
+<h4>Crear Autor</h4>
+<hr>
+<div class="row text-right">
+  <div class="col">
+    <button 
+  routerLink="/listarAutor"
+  class="btn btn-danger">
+    <i class="fa fa-arrow-left"> Regresar</i>
+  </button>
+  </div>  
+</div>
+
+<div class="row animated fadeIn faster">
+  <div class="col">
+    <form (ngSubmit)="guardar(f)" #f="ngForm">
+      <div class="form-group">
+        <label>Nombre:</label>
+        <input type="text" [(ngModel)]="autor.nombre" name="nombres" required class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label>Apellidos:</label>
+        <input type="text" [(ngModel)]="autor.apellidos" name="apellidos" required class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label>Fecha nacimiento:</label>
+        <input type="date" [(ngModel)]="autor.fechaNacimiento" name="fecha" required class="form-control">
+      </div>  
+
+      <hr>
+      <div class="form-group text-center">
+        <button [disabled]="f.invalid" type="submit" class="btn btn-primary w-25">
+          <i class="fa fa-save"></i>
+          Guardar
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+</div>
