@@ -32,7 +32,11 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let libro of listado; let i = index">   
+    <tr *ngFor="let libro of listado | paginate: 
+    {
+    itemsPerPage: cantidadPorPagina,
+    currentPage: p,
+    totalItems: total }; let i = index">   
     <td>{{i + 1}}</td>   
     <td>{{libro.nombre}}</td>
     <td>{{libro.autor.nombre }}  {{ libro.autor.apellidos }} </td>
@@ -54,4 +58,13 @@
     </tr>
   </tbody>
 </table>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+<div class="form-group">
+  <label>Items por página: </label><hr>
+  <select [(ngModel)]="cantidadPorPagina">
+    <option value="5">5</option>
+    <option value="10">10</option>
+</select>
+</div>
 

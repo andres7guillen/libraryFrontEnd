@@ -12,6 +12,9 @@ import Swal from 'sweetalert2';
 export class ListarAutorComponent implements OnInit {
 
   listado:AutorModel[];
+  p: number = 1;  
+  cantidadPorPagina:number = 10;  
+  total:number;
 
   constructor(private service:AutorService,
               private route:Router) { }
@@ -24,6 +27,7 @@ export class ListarAutorComponent implements OnInit {
     this.service.obtenerTodos().subscribe((data)=>{
       if(data != undefined)
       {
+        this.total = data.length;
         this.listado = data;
       }
     },(error)=>{

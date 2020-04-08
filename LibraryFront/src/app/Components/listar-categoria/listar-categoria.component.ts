@@ -11,6 +11,9 @@ import Swal from 'sweetalert2';
 })
 export class ListarCategoriaComponent implements OnInit {
   listado:CategoriaModel[];
+  p: number = 1;  
+  cantidadPorPagina:number = 10;
+  total:number;
 
   constructor(private service:CategoriaService,
               private route:Router) { }
@@ -23,6 +26,7 @@ export class ListarCategoriaComponent implements OnInit {
     this.service.obtenerTodos().subscribe((data)=>{
       if(data != undefined)
       {
+        this.total = data.length;
         this.listado = data;
       }
     },(error)=>{

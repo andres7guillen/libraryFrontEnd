@@ -12,6 +12,9 @@ import { Router } from '@angular/router';
 export class ListarLibroComponent implements OnInit {
 
   listado:LibroModel[];
+  p: number = 1;  
+  cantidadPorPagina:number = 10;
+  total:number;
 
   constructor(private service:LibroService,
               private route:Router) { }
@@ -24,6 +27,7 @@ export class ListarLibroComponent implements OnInit {
     this.service.obtenerTodos().subscribe((data)=>{
       if(data != undefined)
       {
+        this.total = data.length;
         this.listado = data;
       }
     },(error)=>{

@@ -19,6 +19,9 @@ export class FiltroLibroComponent implements OnInit {
   listadoAutores : AutorModel[];
   listadoCategoria: CategoriaModel[];
   listado:LibroModel[];
+  p: number = 1;  
+  cantidadPorPagina:number = 10;
+  total:number;
 
   constructor(private _categoriaService:CategoriaService,
               private _autorService: AutorService,
@@ -32,6 +35,7 @@ export class FiltroLibroComponent implements OnInit {
   obtenerCategorias(){
                 this._categoriaService.obtenerTodos().subscribe((data)=> {
                   if(data != undefined){
+                    this.total = data.length;
                     this.listadoCategoria = data;
                   }
                 },(error)=>{
